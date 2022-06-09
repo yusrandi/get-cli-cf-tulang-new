@@ -10,9 +10,9 @@ import '../models/user_model.dart';
 class AuthService extends GetConnect {
   final AuthenticationManager _authManager = Get.put(AuthenticationManager());
 
-  Future<String> loginUser(String phone, String password) async {
+  Future<String> loginUser(String email, String password) async {
     var _response = await http.post(Uri.parse(Api().getUser + '/login'), body: {
-      "phone": phone,
+      "email": email,
       "password": password,
     });
 

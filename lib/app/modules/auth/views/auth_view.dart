@@ -28,9 +28,19 @@ class AuthView extends GetView<AuthController> {
     }
   }
 
-  String? validateEmail(value) {
+  String? validatePhone(value) {
     if (value.isEmpty) {
       return kPhoneNumberNullError;
+    } else {
+      return null;
+    }
+  }
+
+  String? validateEmail(value) {
+    if (value.isEmpty) {
+      return kEmailNullError;
+    } else if (!emailValidatorRegExp.hasMatch(value)) {
+      return kInvalidEmailError;
     } else {
       return null;
     }
@@ -159,12 +169,12 @@ class AuthView extends GetView<AuthController> {
       controller: _userEmail,
       validator: validateEmail,
       cursorColor: CoreColor.primary,
-      keyboardType: TextInputType.number,
+      keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
-        labelText: 'Phone',
+        labelText: 'Email',
         labelStyle: const TextStyle(color: Colors.black),
 
-        hintText: 'Enter your phone number',
+        hintText: 'Enter your email',
         // Here is key idea
 
         prefixIcon:
