@@ -12,8 +12,8 @@ import '../controllers/diagnosa_controller.dart';
 class DiagnosaView extends GetView<DiagnosaController> {
   final DiagnosaController diagnosaController = Get.put(DiagnosaController());
   final List dropdownItemList = [
-    {'label': 'Boleh Jadi', 'value': 0.4},
-    {'label': 'Mungkin', 'value': 0.6},
+    {'label': 'Mungkin', 'value': 0.4},
+    {'label': 'Kemungkinan Besar', 'value': 0.6},
     {'label': 'Hampir Pasti', 'value': 0.8},
   ];
 
@@ -145,7 +145,7 @@ class DiagnosaView extends GetView<DiagnosaController> {
                 child: Container(
               child: Text(g.gejalaNama!,
                   style: CoreStyles.uSubTitle
-                      .copyWith(color: CoreColor.kTextColor, fontSize: 14)),
+                      .copyWith(color: Colors.black, fontSize: 16 )),
             )),
           ],
         ),

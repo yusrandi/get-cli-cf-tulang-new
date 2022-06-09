@@ -44,7 +44,7 @@ class HomeView extends GetView<HomeController> {
             alignment: Alignment.bottomCenter,
             child: Container(
               height: 80,
-              margin: EdgeInsets.all(16),
+              margin: EdgeInsets.all(8),
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(25)),
               child: Row(
