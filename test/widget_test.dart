@@ -1,8 +1,6 @@
 import 'dart:convert';
 
 import 'package:getx_tulang_cf/app/data/config/api.dart';
-import 'package:getx_tulang_cf/app/data/models/user_model.dart';
-import 'package:getx_tulang_cf/app/data/services/auth_service.dart';
 import 'package:http/http.dart' as http;
 
 void main() async {

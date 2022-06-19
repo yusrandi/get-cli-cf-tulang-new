@@ -26,7 +26,7 @@ class ResultController extends GetxController {
 
     print(Get.arguments);
 
-    List<Gejala> gejalas = await getGejala();
+    // List<Gejala> gejalas = await getGejala();
     List<BasisModel> basis = await getBasis();
     List<Penyakit> penyakit = await getPenyakit();
     List<DiagnosaModel> userCf = Get.arguments;
@@ -38,7 +38,7 @@ class ResultController extends GetxController {
     penyakit.forEach((eP) {
       double cfOld = 0;
       double resultCF = 0;
-      double total = 0;
+      // double total = 0;
       basis.forEach((eB) {
         if (eP.id == eB.penyakitId) {
           userCf.forEach((element) {

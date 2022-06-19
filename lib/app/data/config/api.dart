@@ -3,7 +3,7 @@ class Api {
   static Api instance = Api();
   //* Base API URL
   static const domain =
-      "http://192.168.195.13/CF-penyakit-tulang-laravel/public";
+      "http://192.168.182.43/CF-penyakit-tulang-laravel/public";
   // static const baseURL = domain + "/api";
   // static const imageURL = "$domain/public/storage/product_photos_thumb";
   // static const imageUserURL = "$domain/public/storage/user_photos_thumb";
