@@ -39,7 +39,7 @@ class DiagnosaView extends GetView<DiagnosaController> {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return Center(child: CircularProgressIndicator());
                     }
-                    print(snapshot.data);
+                    // print(snapshot.data);
                     if (snapshot.data!.isEmpty) {
                       return Container(
                         child: Center(
@@ -162,7 +162,7 @@ class DiagnosaView extends GetView<DiagnosaController> {
       unselectedItemTS: resultTS,
       placeholderTS: placeholderTS,
       onChange: (e) {
-        print(e);
+        // print(e);
         diagnosaController.dataListResult.value[index] =
             DiagnosaModel(g.id!, e['value']);
       },

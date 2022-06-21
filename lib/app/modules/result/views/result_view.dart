@@ -22,17 +22,15 @@ class ResultView extends GetView<ResultController> {
       ),
       body: Container(
         padding: EdgeInsets.all(8),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
           children: [
             Text(
               "Infromasi Hasil Diagnosa",
               style: CoreStyles.uSubTitle,
             ),
-            // Container(
-            //   child: Obx(() => Text(resultController.resultText.value)),
-            // ),
+            Container(
+              child: Obx(() => Text(resultController.resultText.value)),
+            ),
             SizedBox(height: 16),
             Obx(
               () => listResultPenyakit(resultController.dataListResult),

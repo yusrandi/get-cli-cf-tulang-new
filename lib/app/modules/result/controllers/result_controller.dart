@@ -24,7 +24,7 @@ class ResultController extends GetxController {
   void onInit() async {
     super.onInit();
 
-    print(Get.arguments);
+    // print(Get.arguments);
 
     // List<Gejala> gejalas = await getGejala();
     List<BasisModel> basis = await getBasis();
@@ -39,16 +39,18 @@ class ResultController extends GetxController {
       double cfOld = 0;
       double resultCF = 0;
       // double total = 0;
+      resultText.value += "\nPenyakit ${eP.penyakitNama}";
+
       basis.forEach((eB) {
         if (eP.id == eB.penyakitId) {
-          userCf.forEach((element) {
+          userCf.where((e) => e.value != 0.0).forEach((element) {
             if (element.id == eB.gejalaId) {
               double cfCombine =
                   roundDouble((double.parse(eB.bobot!) * element.value), 2);
               double cfGabungan =
                   roundDouble((cfOld + cfCombine * (1 - cfOld)), 2);
               resultText.value +=
-                  "\nPenyakit ${eP.penyakitNama}, Gejala ${eB.gejalaId} \nCf Pakar ${eB.bobot} * Cf User ${element.value}, CF Combine ${cfCombine}, CfOld ${cfOld}, CF Gabungan ${cfGabungan}";
+                  "\nGejala ${eB.gejalaId} \nCf Pakar ${eB.bobot} * Cf User ${element.value}, CF Combine ${cfCombine}, CfOld ${cfOld}, CF Gabungan ${cfGabungan}";
               cfOld = cfGabungan;
               resultCF = cfGabungan;
             }
