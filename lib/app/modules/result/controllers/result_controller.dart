@@ -35,22 +35,51 @@ class ResultController extends GetxController {
     resultText.value = "";
 
     List allResult = [];
+    int penyakitIdOld = 0;
+
     penyakit.forEach((eP) {
       double cfOld = 0;
       double resultCF = 0;
       // double total = 0;
       resultText.value += "\nPenyakit ${eP.penyakitNama}";
 
+      penyakitIdOld = eP.id!;
+      var listValue = [];
+
       basis.forEach((eB) {
         if (eP.id == eB.penyakitId) {
+          // var minValueSelected =
+          //     userSelected.reduce((a, b) => a.value < b.value ? a : b);
+          userCf.where((e) => e.value != 0.0).forEach((element) {
+            if (element.id == eB.gejalaId) {
+              if (eB.penyakitId == penyakitIdOld) {
+                listValue.add(element.value);
+              }
+            }
+          });
+
+          // get min value from user value cf
+          double minValue = 0.0;
+          if (listValue.isNotEmpty) {
+            if (listValue.length > 1) {
+              print(
+                  'Min Value penyakit ${eB.penyakitId} value  ${listValue.reduce((a, b) => a < b ? a : b)}');
+              minValue = listValue.reduce((a, b) => a < b ? a : b);
+            } else {
+              print(
+                  'Min Value penyakit ${eB.penyakitId} value  ${listValue[0]}');
+              minValue = listValue[0];
+            }
+          }
+
           userCf.where((e) => e.value != 0.0).forEach((element) {
             if (element.id == eB.gejalaId) {
               double cfCombine =
-                  roundDouble((double.parse(eB.bobot!) * element.value), 2);
+                  roundDouble((double.parse(eB.bobot!) * minValue), 2);
               double cfGabungan =
                   roundDouble((cfOld + cfCombine * (1 - cfOld)), 2);
               resultText.value +=
-                  "\nGejala ${eB.gejalaId} \nCf Pakar ${eB.bobot} * Cf User ${element.value}, CF Combine ${cfCombine}, CfOld ${cfOld}, CF Gabungan ${cfGabungan}";
+                  "\nGejala ${eB.gejalaId} \nCf Pakar ${eB.bobot} * Cf User ${minValue}, CF Combine ${cfCombine}, CfOld ${cfOld}, CF Gabungan ${cfGabungan}";
               cfOld = cfGabungan;
               resultCF = cfGabungan;
             }

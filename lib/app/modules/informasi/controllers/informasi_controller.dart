@@ -41,17 +41,24 @@ class InformasiController extends GetxController {
     listDetail.addAll([
       {
         'title_id': '0',
-        'detail': 'a. Ciri-ciri yang dialami penderita osteoporosis yaitu',
+        'detail': 'a. Gejala yang dialami penderita osteoporosis yaitu',
         'desc': [
-          'Berat badan rendah (indeks masa tubuh <19 kg/m2)',
-          'Berat badan rendah (indeks masa tubuh <19 kg/m2)',
-          'Berat badan rendah (indeks masa tubuh <19 kg/m2)',
-          'Berat badan rendah (indeks masa tubuh <19 kg/m2)',
+          'Kelemahan Fisik',
         ]
       },
       {
         'title_id': '0',
-        'detail': 'b. Penatalaksanaan penderita osteoporosis yaitu',
+        'detail': 'b. Ciri-ciri yang dialami penderita osteoporosis yaitu',
+        'desc': [
+          'berat badan rendah (indeks masa tubuh <19 kg/m2)',
+          'tanda adanya oerubahan kurvatura tulang belakang',
+          'tanda-tanda presdiposisi penyebab osteoporosis (sejarah keluarga, ganggaun edorkrin, gangguan nutrisi, penyakit ginjal, penyakit rematik, gangguan hematologi, gangguan genetik, gangguan lainnya, serta obat-obatan)',
+          'perubahan gaya berjalan'
+        ]
+      },
+      {
+        'title_id': '0',
+        'detail': 'c. Penatalaksanaan penderita osteoporosis yaitu',
         'desc': [
           'Diet, kepadatan tulang harus mendapatkan cukup kalsium (1.000 mg/hari) dalam dietnya (minum susu atau makan makanan tinggi kalsium seperti salmon).',
           'Spesialis, orang dengan faktur tulang belakang, pinggang atau pergelangan tangan harus dirujuk ke spesialis ortopedi untuk manajemen selanjutnya.',

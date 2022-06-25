@@ -11,8 +11,10 @@ import '../controllers/tentang_controller.dart';
 
 class TentangView extends GetView<TentangController> {
   final tentangController = Get.put(TentangController());
+
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return SingleChildScrollView(
       physics: BouncingScrollPhysics(),
       child: Column(
@@ -53,32 +55,38 @@ class TentangView extends GetView<TentangController> {
               final user = users[index];
               return Row(
                 children: [
-                  Lottie.asset(CoreImages.homeDoctorJson, width: 100),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(user.name!,
-                          style: CoreStyles.uSubTitle
-                              .copyWith(color: Colors.black, fontSize: 16)),
-                      Row(
-                        children: [
-                          Icon(Icons.phone, size: 15),
-                          SizedBox(width: 8),
-                          Text(user.phone!,
-                              style: CoreStyles.uSubTitle.copyWith(
-                                  color: CoreColor.primary, fontSize: 12)),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.home_filled, size: 15),
-                          SizedBox(width: 8),
-                          Text(user.address!,
-                              style: CoreStyles.uSubTitle.copyWith(
-                                  color: CoreColor.kTextColor, fontSize: 10)),
-                        ],
-                      ),
-                    ],
+                  Lottie.asset(CoreImages.homeDoctorJson, width: 50),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(user.name!,
+                            style: CoreStyles.uSubTitle
+                                .copyWith(color: Colors.black, fontSize: 16)),
+                        Row(
+                          children: [
+                            Icon(Icons.phone, size: 15),
+                            SizedBox(width: 8),
+                            Text(user.phone!,
+                                style: CoreStyles.uSubTitle.copyWith(
+                                    color: CoreColor.primary, fontSize: 12)),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(Icons.home_filled, size: 15),
+                            SizedBox(width: 8),
+                            Text(user.address!,
+                                style: CoreStyles.uSubTitle.copyWith(
+                                    color: CoreColor.kTextColor, fontSize: 10),
+                                textAlign: TextAlign.center),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               );
