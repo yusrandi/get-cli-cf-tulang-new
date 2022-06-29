@@ -38,42 +38,47 @@ class ResultController extends GetxController {
     int penyakitIdOld = 0;
 
     penyakit.forEach((eP) {
+      print('Penyakit ${eP.id}');
+      resultText.value += "\nPenyakit ${eP.penyakitNama}";
       double cfOld = 0;
       double resultCF = 0;
-      // double total = 0;
-      resultText.value += "\nPenyakit ${eP.penyakitNama}";
 
-      penyakitIdOld = eP.id!;
       var listValue = [];
 
-      basis.forEach((eB) {
-        if (eP.id == eB.penyakitId) {
-          // var minValueSelected =
-          //     userSelected.reduce((a, b) => a.value < b.value ? a : b);
-          userCf.where((e) => e.value != 0.0).forEach((element) {
-            if (element.id == eB.gejalaId) {
-              if (eB.penyakitId == penyakitIdOld) {
-                listValue.add(element.value);
-              }
-            }
-          });
-
-          // get min value from user value cf
-          double minValue = 0.0;
-          if (listValue.isNotEmpty) {
-            if (listValue.length > 1) {
-              print(
-                  'Min Value penyakit ${eB.penyakitId} value  ${listValue.reduce((a, b) => a < b ? a : b)}');
-              minValue = listValue.reduce((a, b) => a < b ? a : b);
-            } else {
-              print(
-                  'Min Value penyakit ${eB.penyakitId} value  ${listValue[0]}');
-              minValue = listValue[0];
+      userCf.where((e) => e.value != 0.0).forEach((eU) {
+        print('User CF Value ${eU.value}');
+        basis.forEach((eB) {
+          if (eP.id == eB.penyakitId) {
+            if (eU.id == eB.gejalaId) {
+              print(' Gejala ID ${eB.gejalaId} bobot ${eB.bobot}');
+              listValue.add(eU.value);
             }
           }
+        });
+      });
 
-          userCf.where((e) => e.value != 0.0).forEach((element) {
-            if (element.id == eB.gejalaId) {
+      print('Length ${listValue.length}');
+
+      // get min value from user value cf
+
+      double minValue = 0.0;
+      if (listValue.isNotEmpty) {
+        if (listValue.length > 1) {
+          // print(
+          //     'Min Value not empty penyakit ${eB.penyakitId} value  ${listValue.reduce((a, b) => a < b ? a : b)}');
+          minValue = listValue.reduce((a, b) => a < b ? a : b);
+        } else {
+          // print(
+          //     'Min Value penyakit ${eB.penyakitId} value  ${listValue[0]}');
+          minValue = listValue[0];
+        }
+      }
+
+      print('Min Value  ${minValue}');
+      userCf.where((e) => e.value != 0.0).forEach((eU) {
+        basis.forEach((eB) {
+          if (eP.id == eB.penyakitId) {
+            if (eU.id == eB.gejalaId) {
               double cfCombine =
                   roundDouble((double.parse(eB.bobot!) * minValue), 2);
               double cfGabungan =
@@ -83,9 +88,11 @@ class ResultController extends GetxController {
               cfOld = cfGabungan;
               resultCF = cfGabungan;
             }
-          });
-        }
+          }
+        });
       });
+
+      print('=========================================');
       allResult.add(resultCF);
       dataListResult.add(ResultModel(eP, resultCF));
       count.value += 1;
