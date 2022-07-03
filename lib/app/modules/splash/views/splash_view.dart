@@ -63,7 +63,7 @@ class SplashView extends GetView<SplashController> {
                     "${CoreStrings.appName}",
                     style: TextStyle(
                         color: CoreColor.primary,
-                        fontSize: 56,
+                        fontSize: 36,
                         fontWeight: FontWeight.bold),
                   ),
                   Text("${CoreStrings.welcomeTitle}",

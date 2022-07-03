@@ -28,9 +28,9 @@ class ResultView extends GetView<ResultController> {
               "Infromasi Hasil Diagnosa",
               style: CoreStyles.uSubTitle,
             ),
-            Container(
-              child: Obx(() => Text(resultController.resultText.value)),
-            ),
+            // Container(
+            //   child: Obx(() => Text(resultController.resultText.value)),
+            // ),
             SizedBox(height: 16),
             Obx(
               () => listResultPenyakit(resultController.dataListResult),
@@ -66,6 +66,15 @@ class ResultView extends GetView<ResultController> {
   }
 
   kesimpulan(List<ResultModel> list) {
+    var keterangan = 'Ringan';
+    var hasil = (list[0].value * 100).round();
+    if (hasil < 51) {
+      keterangan = 'Ringan';
+    } else if (hasil > 50 && hasil < 70) {
+      keterangan = 'Sedang';
+    } else {
+      keterangan = 'Berat';
+    }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -102,7 +111,7 @@ class ResultView extends GetView<ResultController> {
               child: RichText(
                 text: TextSpan(
                     text:
-                        'Dari hasil diagnosa tersebut dinyatakan anda mengidap penyakit ',
+                        'Berdasarkan hasil konsultasi yang telah anda lakukan, maka anda mengalami penyakit ',
                     style: TextStyle(color: CoreColor.kTextColor, fontSize: 18),
                     children: <TextSpan>[
                       TextSpan(
@@ -128,7 +137,8 @@ class ResultView extends GetView<ResultController> {
                             color: CoreColor.kTextColor, fontSize: 18),
                       ),
                       TextSpan(
-                        text: (list[0].value * 100).round().toString() + " %",
+                        text: (list[0].value * 100).round().toString() +
+                            "% dinyatakan kategori $keterangan",
                         style:
                             TextStyle(color: CoreColor.primary, fontSize: 18),
                       )
