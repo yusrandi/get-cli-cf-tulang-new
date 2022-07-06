@@ -63,7 +63,7 @@ class DashboardView extends GetView<DashboardController> {
                                 fontWeight: FontWeight.bold)),
                         Text("Tingkat Keparahan Tulang",
                             style: TextStyle(
-                                color: CoreColor.primary, fontSize: 16),
+                                color: CoreColor.primary, fontSize: 12),
                             textAlign: TextAlign.center),
                       ],
                     ),
@@ -82,7 +82,7 @@ class DashboardView extends GetView<DashboardController> {
                                 fontWeight: FontWeight.bold)),
                         Text("Tingkat Keparahan Sendi",
                             style: TextStyle(
-                                color: CoreColor.primary, fontSize: 16),
+                                color: CoreColor.primary, fontSize: 12),
                             textAlign: TextAlign.center),
                       ],
                     )

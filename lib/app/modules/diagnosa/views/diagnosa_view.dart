@@ -13,6 +13,7 @@ class DiagnosaView extends GetView<DiagnosaController> {
   final DiagnosaController diagnosaController = Get.put(DiagnosaController());
   final List dropdownItemList = [
     {'label': 'Pilih', 'value': 0.0},
+    {'label': 'Tidak Diketahui/Tidak Dirasakan Secara Pasti ', 'value': 0.2},
     {'label': 'Mungkin', 'value': 0.4},
     {'label': 'Kemungkinan Besar', 'value': 0.6},
     {'label': 'Hampir Pasti', 'value': 0.8},
@@ -50,6 +51,11 @@ class DiagnosaView extends GetView<DiagnosaController> {
                     return Container(
                       child: Column(
                         children: [
+                          Text(
+                            'silahkan Anda menjawab pertanyaan sesuai dengan kondisi yang Anda rasakan',
+                            style: CoreStyles.uSubTitle,
+                          ),
+                          SizedBox(height: 16),
                           listGejala(snapshot),
                         ],
                       ),

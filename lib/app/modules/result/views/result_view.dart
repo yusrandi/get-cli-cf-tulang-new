@@ -28,9 +28,9 @@ class ResultView extends GetView<ResultController> {
               "Infromasi Hasil Diagnosa",
               style: CoreStyles.uSubTitle,
             ),
-            // Container(
-            //   child: Obx(() => Text(resultController.resultText.value)),
-            // ),
+            Container(
+              child: Obx(() => Text(resultController.resultText.value)),
+            ),
             SizedBox(height: 16),
             Obx(
               () => listResultPenyakit(resultController.dataListResult),

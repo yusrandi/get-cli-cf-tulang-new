@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
    <application
-        android:label="getx_tulang_cf"
+        android:label="Joints Bone"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
