@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:getx_tulang_cf/app/modules/informasi/views/detail_informasi.dart';
 
 import '../modules/auth/bindings/auth_binding.dart';
 import '../modules/auth/views/auth_view.dart';
@@ -10,9 +9,12 @@ import '../modules/diagnosa/views/diagnosa_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/informasi/bindings/informasi_binding.dart';
+import '../modules/informasi/views/detail_informasi.dart';
 import '../modules/informasi/views/informasi_view.dart';
 import '../modules/konsultasi/bindings/konsultasi_binding.dart';
 import '../modules/konsultasi/views/konsultasi_view.dart';
+import '../modules/profile/bindings/profile_binding.dart';
+import '../modules/profile/views/profile_view.dart';
 import '../modules/result/bindings/result_binding.dart';
 import '../modules/result/views/result_view.dart';
 import '../modules/sendi/bindings/sendi_binding.dart';
@@ -83,6 +85,11 @@ class AppPages {
     GetPage(
       name: _Paths.DETAIL,
       page: () => DetailInformasi(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => ProfileView(),
+      binding: ProfileBinding(),
     ),
   ];
 }

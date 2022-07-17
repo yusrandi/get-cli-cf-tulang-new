@@ -45,4 +45,13 @@ class UserService extends GetConnect {
 
     return data["responsemsg"];
   }
+
+  Future<UserModel> getUser() async {
+    final response = await http
+        .get(Uri.parse(Api().getUser + '/' + _authManager.getToken()!));
+
+    var data = json.decode(response.body);
+    UserModel user = UserModel.fromJson(json.decode(response.body)['data']);
+    return user;
+  }
 }

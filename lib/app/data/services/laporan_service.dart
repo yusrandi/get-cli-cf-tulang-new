@@ -3,12 +3,16 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+import '../../modules/auth/controllers/authentication_manager.dart';
 import '../config/api.dart';
 import '../models/laporan_model.dart';
 
 class LaporanService extends GetConnect {
+  final AuthenticationManager _authManager = Get.put(AuthenticationManager());
+
   Future<List<LaporanModel>> fetchLaporan() async {
-    final response = await http.get(Uri.parse(Api.instance.getLaporan));
+    final response = await http.get(
+        Uri.parse(Api.instance.getLaporan + '/' + _authManager.getToken()!));
 
     List data = (json.decode(response.body) as Map<String, dynamic>)["data"];
     if (data.isEmpty) {

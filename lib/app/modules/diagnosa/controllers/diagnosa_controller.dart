@@ -33,5 +33,9 @@ class DiagnosaController extends GetxController {
 class DiagnosaModel {
   int id;
   double value;
-  DiagnosaModel(this.id, this.value);
+  String gejalaLabel;
+  String valueLabel;
+  String gejalaKode;
+  DiagnosaModel(
+      this.id, this.value, this.gejalaLabel, this.valueLabel, this.gejalaKode);
 }

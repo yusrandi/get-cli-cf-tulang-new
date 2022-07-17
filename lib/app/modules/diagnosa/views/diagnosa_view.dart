@@ -24,7 +24,7 @@ class DiagnosaView extends GetView<DiagnosaController> {
     return Scaffold(
       backgroundColor: CoreColor.whiteSoft,
       appBar: AppBar(
-        title: Text('Form Diagnosa'),
+        title: Text('Form Konsultasi'),
         centerTitle: false,
         backgroundColor: CoreColor.primary,
       ),
@@ -52,7 +52,7 @@ class DiagnosaView extends GetView<DiagnosaController> {
                       child: Column(
                         children: [
                           Text(
-                            'silahkan Anda menjawab pertanyaan sesuai dengan kondisi yang Anda rasakan',
+                            'Silahkan Anda Menjawab Pertanyaan Sesuai Kondisi Gejala dan Ciri-ciri yang Anda Rasakan!',
                             style: CoreStyles.uSubTitle,
                           ),
                           SizedBox(height: 16),
@@ -117,8 +117,12 @@ class DiagnosaView extends GetView<DiagnosaController> {
       itemCount: snapshot.data!.length,
       itemBuilder: (context, index) {
         Gejala g = snapshot.data![index];
-        diagnosaController.dataListResult.value
-            .add(DiagnosaModel(g.id!, dropdownItemList[0]['value']));
+        diagnosaController.dataListResult.value.add(DiagnosaModel(
+            g.id!,
+            dropdownItemList[0]['value'],
+            g.gejalaNama!,
+            dropdownItemList[0]['label'],
+            g.gejalaKode!));
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -143,18 +147,10 @@ class DiagnosaView extends GetView<DiagnosaController> {
       child: Container(
         decoration: BoxDecoration(
             color: Colors.transparent, borderRadius: BorderRadius.circular(8)),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(index.toString()),
-            SizedBox(width: 16),
-            Expanded(
-                child: Container(
-              child: Text(g.gejalaNama!,
-                  style: CoreStyles.uSubTitle
-                      .copyWith(color: Colors.black, fontSize: 16)),
-            )),
-          ],
+        child: Container(
+          child: Text("${g.gejalaNama!} (${g.gejalaKode})",
+              style: CoreStyles.uSubTitle
+                  .copyWith(color: Colors.black, fontSize: 16)),
         ),
       ),
     );
@@ -169,8 +165,8 @@ class DiagnosaView extends GetView<DiagnosaController> {
       placeholderTS: placeholderTS,
       onChange: (e) {
         // print(e);
-        diagnosaController.dataListResult.value[index] =
-            DiagnosaModel(g.id!, e['value']);
+        diagnosaController.dataListResult.value[index] = DiagnosaModel(
+            g.id!, e['value'], g.gejalaNama!, e['label'], g.gejalaKode!);
       },
       defaultValue: dropdownItemList[0],
       // placeholder: 'insert...',

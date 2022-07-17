@@ -64,12 +64,12 @@ class HomeView extends GetView<HomeController> {
                           "assets/icons/bookmark-filled.svg", 2, "Sendi")),
                   Expanded(
                       flex: 1,
-                      child: _listMenu(
-                          "assets/icons/Bill Icon.svg", 3, "Diagnosa")),
+                      child:
+                          _listMenu("assets/icons/forum.svg", 3, "Konsultasi")),
                   Expanded(
                       flex: 1,
-                      child:
-                          _listMenu("assets/icons/Settings.svg", 4, "Dokter")),
+                      child: _listMenu(
+                          "assets/icons/male-doctor.svg", 4, "Dokter")),
                 ],
               ),
             ),
@@ -110,7 +110,8 @@ class HomeView extends GetView<HomeController> {
                   style: TextStyle(
                       color: controller.count.value == index
                           ? Colors.white
-                          : CoreColor.primary),
+                          : CoreColor.primary,
+                      fontSize: 12),
                 )
               ],
             ),

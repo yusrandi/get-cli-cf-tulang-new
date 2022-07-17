@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:getx_tulang_cf/app/cores/core_strings.dart';
+import 'package:getx_tulang_cf/app/routes/app_pages.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../cores/core_colors.dart';
@@ -25,13 +26,16 @@ class DashboardView extends GetView<DashboardController> {
             top: 50,
             right: 16,
             left: 16,
-            child: Row(
-              children: [
-                SvgPicture.asset("assets/icons/Bell.svg",
-                    color: CoreColor.primary),
-                SizedBox(width: 16),
-                Text(CoreStrings.appName, style: CoreStyles.uTitle),
-              ],
+            child: GestureDetector(
+              onTap: () => Get.toNamed(Routes.PROFILE),
+              child: Row(
+                children: [
+                  SvgPicture.asset("assets/icons/male-doctor.svg",
+                      color: CoreColor.primary),
+                  SizedBox(width: 16),
+                  Text(CoreStrings.appName, style: CoreStyles.uTitle),
+                ],
+              ),
             )),
         Center(child: Lottie.asset(CoreImages.homeDoctorJson)),
         Positioned(

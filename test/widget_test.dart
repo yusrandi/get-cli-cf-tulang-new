@@ -1,19 +1,15 @@
+import 'dart:convert';
+
+import 'package:getx_tulang_cf/app/data/config/api.dart';
 import 'package:getx_tulang_cf/app/data/models/user_model.dart';
 import 'package:getx_tulang_cf/app/data/services/user_service.dart';
 
-void main() async {
-  var haha = await UserService().userRegis(
-      UserModel(
-          id: 0,
-          name: 'name',
-          address: 'address',
-          phone: '00000',
-          email: 'adminnn@gmail.com',
-          lahir: 'lahir',
-          pekerjaan: 'pekerjaan'),
-      "password");
+import 'package:http/http.dart' as http;
 
-  print(haha);
+void main() async {
+  final response = await http.get(Uri.parse(Api.instance.getGejalas));
+
+  print(response.headers);
 }
 
 generateRule() {

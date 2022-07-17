@@ -82,20 +82,23 @@ class SplashView extends GetView<SplashController> {
                 child: Lottie.asset(CoreImages.medicJson),
               )),
           SizedBox(height: 16),
-          GestureDetector(
-            onTap: (() => Get.offAllNamed(Routes.HOME)),
-            child: Container(
-              height: 80,
-              margin: EdgeInsets.all(16),
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  color: CoreColor.primary),
-              child: Center(
-                  child: Text(
-                'GET STARTED',
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              )),
+          Visibility(
+            visible: false,
+            child: GestureDetector(
+              onTap: (() => Get.offAllNamed(Routes.HOME)),
+              child: Container(
+                height: 80,
+                margin: EdgeInsets.all(16),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: CoreColor.primary),
+                child: Center(
+                    child: Text(
+                  'GET STARTED',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                )),
+              ),
             ),
           )
         ],

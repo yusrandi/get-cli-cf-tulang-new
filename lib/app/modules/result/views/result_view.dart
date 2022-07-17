@@ -25,15 +25,20 @@ class ResultView extends GetView<ResultController> {
         child: ListView(
           children: [
             Text(
-              "Infromasi Hasil Diagnosa",
+              "Informasi Hasil Diagnosa",
               style: CoreStyles.uSubTitle,
-            ),
-            Container(
-              child: Obx(() => Text(resultController.resultText.value)),
             ),
             SizedBox(height: 16),
             Obx(
               () => listResultPenyakit(resultController.dataListResult),
+            ),
+            SizedBox(height: 16),
+            Text(
+              "Kemungkinan Penyakit yang lain terjadi ",
+              style: CoreStyles.uSubTitle,
+            ),
+            Container(
+              child: Obx(() => Text(resultController.resultText.value)),
             ),
           ],
         ),
@@ -111,9 +116,19 @@ class ResultView extends GetView<ResultController> {
               child: RichText(
                 text: TextSpan(
                     text:
-                        'Berdasarkan hasil konsultasi yang telah anda lakukan, maka anda mengalami penyakit ',
+                        'Berdasarkan konsultasi yang telah Anda lakukan, dengan gejala dan ciri-ciri yang telah anda inputkan ',
                     style: TextStyle(color: CoreColor.kTextColor, fontSize: 18),
                     children: <TextSpan>[
+                      TextSpan(
+                        text: "\n${resultController.userText}\n",
+                        style:
+                            TextStyle(color: CoreColor.primary, fontSize: 18),
+                      ),
+                      TextSpan(
+                        text: ' maka Anda mengalami penyakit  ',
+                        style: TextStyle(
+                            color: CoreColor.kTextColor, fontSize: 18),
+                      ),
                       TextSpan(
                         text: list[0].penyakit!.status == "PT"
                             ? 'Penyakit Tulang'
@@ -122,7 +137,7 @@ class ResultView extends GetView<ResultController> {
                             TextStyle(color: CoreColor.primary, fontSize: 18),
                       ),
                       TextSpan(
-                        text: ' dengan jenis penyakit ',
+                        text: ' jenis penyakit ',
                         style: TextStyle(
                             color: CoreColor.kTextColor, fontSize: 18),
                       ),

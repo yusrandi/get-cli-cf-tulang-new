@@ -16,6 +16,7 @@ import '../../diagnosa/controllers/diagnosa_controller.dart';
 class ResultController extends GetxController {
   final count = 0.obs;
   final resultText = "".obs;
+  final userText = "".obs;
 
   RxList<ResultModel> dataListResult = (List<ResultModel>.of([])).obs;
   final AuthenticationManager authenticationManager = Get.find();
@@ -33,10 +34,14 @@ class ResultController extends GetxController {
     // print(penyakit);
 
     resultText.value = "";
+    userText.value = "\n";
 
     List allResult = [];
     int penyakitIdOld = 0;
 
+    userCf.where((e) => e.value != 0.0).forEach((eU) {
+      userText.value += "${eU.gejalaKode} = ${eU.valueLabel} (${eU.value})\n";
+    });
     penyakit.forEach((eP) {
       print('Penyakit ${eP.id}');
       resultText.value += "\nPenyakit ${eP.penyakitNama}";
@@ -98,7 +103,7 @@ class ResultController extends GetxController {
       count.value += 1;
 
       resultText.value +=
-          "\nResult $resultCF\n=========================================================\n";
+          "\nResult $resultCF\n====================================\n";
     });
   }
 

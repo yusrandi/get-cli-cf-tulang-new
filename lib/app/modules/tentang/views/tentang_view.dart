@@ -15,16 +15,29 @@ class TentangView extends GetView<TentangController> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: 50),
-          Text("List Dokter", style: CoreStyles.uTitle),
-          listUser(),
-        ],
+    return Center(
+      child: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: doctorView(),
       ),
+    );
+  }
+
+  doctorView() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        SizedBox(height: 50),
+        Text("Profil Dokter", style: CoreStyles.uTitle),
+        Lottie.asset(CoreImages.homeDoctorJson, width: 150),
+        Text("dr. Gerry Dwi Putri Sp. OT", style: CoreStyles.uSubTitle),
+        Text("+62 853-4272-7058", style: CoreStyles.uSubTitle),
+        Text(
+            "Jln. Perintis Kemerdekaan Km. 11 Tamalandrea Jaya \n(RSUP Wahidin Sudirohusodo) Kec. Tamalandrea,\nKota Makassar",
+            style: CoreStyles.uContent,
+            textAlign: TextAlign.center),
+      ],
     );
   }
 

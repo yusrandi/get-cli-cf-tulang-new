@@ -137,7 +137,7 @@ class AuthView extends GetView<AuthController> {
                       showDatePicker(
                         context: context,
                         initialDate: DateTime.now(),
-                        firstDate: DateTime(1980),
+                        firstDate: DateTime(1960),
                         lastDate: DateTime(DateTime.now().year + 1),
                       ).then((date) => authController.selectedDate.value =
                           date.toString().split(' ')[0]);
