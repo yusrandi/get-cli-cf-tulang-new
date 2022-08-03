@@ -102,9 +102,21 @@ class ResultView extends GetView<ResultController> {
                   ),
                 ),
                 Center(
-                  child: Text(
-                    (list[0].value * 100).round().toString() + " %",
-                    style: TextStyle(color: CoreColor.primary, fontSize: 24),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        (list[0].value * 100).round().toString() + " %",
+                        style:
+                            TextStyle(color: CoreColor.primary, fontSize: 24),
+                      ),
+                      Text(
+                        list[0].penyakit!.penyakitNama!,
+                        style:
+                            TextStyle(color: CoreColor.primary, fontSize: 14),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -125,7 +137,7 @@ class ResultView extends GetView<ResultController> {
                             TextStyle(color: CoreColor.primary, fontSize: 18),
                       ),
                       TextSpan(
-                        text: ' maka Anda mengalami penyakit  ',
+                        text: ' maka Anda mengalami ',
                         style: TextStyle(
                             color: CoreColor.kTextColor, fontSize: 18),
                       ),

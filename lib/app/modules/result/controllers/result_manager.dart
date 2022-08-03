@@ -7,6 +7,7 @@ class ResultManager extends GetxController with CacheResult {
 
   void logOut() {
     isLogged.value = false;
+    removeToken();
   }
 
   void insertTulang(double tulang) async {

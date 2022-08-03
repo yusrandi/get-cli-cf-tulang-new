@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:getx_tulang_cf/app/cores/core_styles.dart';
 import 'package:getx_tulang_cf/app/data/models/user_model.dart';
 import 'package:getx_tulang_cf/app/modules/auth/controllers/authentication_manager.dart';
+import 'package:getx_tulang_cf/app/modules/result/controllers/result_manager.dart';
 import 'package:getx_tulang_cf/app/routes/app_pages.dart';
 import 'package:lottie/lottie.dart';
 
@@ -14,6 +15,7 @@ import '../controllers/profile_controller.dart';
 class ProfileView extends GetView<ProfileController> {
   ProfileView({Key? key}) : super(key: key);
   final AuthenticationManager authenticationManager = Get.find();
+  final ResultManager resultManager = Get.put(ResultManager());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,6 +99,7 @@ class ProfileView extends GetView<ProfileController> {
                   GestureDetector(
                     onTap: () {
                       authenticationManager.logOut();
+                      resultManager.logOut();
                       Get.offAndToNamed(Routes.SPLASH);
                     },
                     child: Container(

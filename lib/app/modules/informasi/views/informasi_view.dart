@@ -20,7 +20,7 @@ class InformasiView extends GetView<InformasiController> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(height: 50),
-            Text("Infromasi Penyakit Tulang",
+            Text("Informasi Penyakit Tulang",
                 style: TextStyle(
                     color: CoreColor.primary,
                     fontSize: 24,

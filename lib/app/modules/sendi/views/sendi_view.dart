@@ -20,7 +20,7 @@ class SendiView extends GetView<SendiController> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(height: 50),
-            Text("Infromasi Penyakit Sendi",
+            Text("Informasi Penyakit Sendi",
                 style: TextStyle(
                     color: CoreColor.primary,
                     fontSize: 24,

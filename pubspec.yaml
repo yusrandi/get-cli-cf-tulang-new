@@ -5,6 +5,7 @@ description: A new Flutter project.
 environment:
   sdk: ">=2.17.0 <3.0.0"
 
+# dependency atau library
 dependencies:
   cupertino_icons: ^1.0.2
   get: 4.6.5

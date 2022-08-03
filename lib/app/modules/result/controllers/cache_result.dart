@@ -22,6 +22,12 @@ mixin CacheResult {
     final box = GetStorage();
     return box.read(CacheResultKey.SENDI.toString());
   }
+
+  Future<void> removeToken() async {
+    final box = GetStorage();
+    await box.remove(CacheResultKey.TULANG.toString());
+    await box.remove(CacheResultKey.SENDI.toString());
+  }
 }
 
 enum CacheResultKey { TULANG, SENDI }
